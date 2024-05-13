@@ -1,18 +1,10 @@
-saldo = 500
-print(saldo)
-saldo += 200
-print(saldo)
-saldo -= 100
-print(saldo)
-saldo *= 2
-print(saldo)
-saldo /= 4
-print(saldo)
-saldo //= 5
-print(saldo)
-saldo **= 3
-print(saldo)
-saldo %= 299
-print(saldo)
-saldo **= 3
-print(saldo)
+saldo = 1000
+saque = 100
+limite = 100
+
+total = saldo >= saque and saque <= limite
+if total == True:
+    print("Saque aprovado")
+    print(f"Valor sacado {saque} Saldo atual {saldo - saque}")
+
+
