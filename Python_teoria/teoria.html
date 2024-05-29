@@ -202,3 +202,40 @@ print(sorted(linguagens))
 print(sorted(linguagens, key=lambda x: len(x)))
 
 print(sorted(linguagens, key=lambda x: len(x), reverse=True))
+
+print([n**2 if n > 6 else n for n in range(10) if n % 2 == 0])
+
+for n in range(10):
+    if n % 2 == 0:
+        print(n**2 if n > 6 else n)
+
+
+<!-- Tuplas -->
+
+frutas = ("laranja", "pera", "uva",)
+
+letras = tuple("python")
+
+numeros = tuple([1,2,3,4])
+
+pains = ("brasil",)
+
+print(frutas[0])
+print(frutas[2])
+print(frutas[-1])
+print(frutas[-3])
+
+matriz = (
+    (1, "a", 2),
+    ("b", 3, 4),
+    (6, 5, "c"),
+)
+for elemento in matriz:
+    print(elemento)
+print()
+print(matriz[0])
+print(matriz[0][0])
+print(matriz[0][-1])
+print(matriz[-1][-1])
+
+
