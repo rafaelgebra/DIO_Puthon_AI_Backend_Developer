@@ -318,3 +318,63 @@ print(numeros)
 print(1 in numeros)
 print(10 in numeros)
 
+
+<!-- Dicionarios -->
+
+pessoa = {"nome": "Rafael", "idade": 35}
+
+pessoa = dict(nome="Rafael", idade=35) <!-- Consultor/classe: dict. -->
+
+pessoa["telefone"] = "333-1234"
+
+print(pessoa["nome"])
+print(pessoa["idade"])
+
+pessoa["nome"] = "Thatiane"
+
+print(pessoa)
+
+
+contatos = {
+    "guilherme@gmail.com": {"noome": "Guilherme", "telefone": "3333-2221"},
+    "rafael@gmail.com": {"nome": "Rafael", "telefone": "3322-1234"}
+}
+
+for chave in contatos:
+    print(chave, contatos[chave])
+
+
+for chave, valor in contatos.items():
+    print(chave, valor)
+
+
+    --Metodos
+
+contatos.clear()
+contato.copy()
+
+Com o fromkeys consegui criar a chave sozinho
+dict.fromkeys(["nome", telefone]) <!-- Sem vincular valor-->
+
+dict.fromkeys(["nome", "teledone"], "vazio") <!-- Cria as chaves porém é adicionado um valor padrão das chaves-->
+
+contatos.get("chave") <!-- consegue procurar se a chave existe no dicionario. -->
+
+contatos.get("chave", {}) <!-- Se não achar a chave, retorna um dicionario-->
+
+print(contatos.get("chave"))
+print(contatos.get("chave", {}))
+
+print(contatos)
+
+contato.pop() <!-- remove e retorna o que removel-->
+
+
+contato.setdefault()<!-- se exister já a chave ele não altera o valor, e se não existir ele cria-->
+
+contatos.update() <!-- atualiza o dicionario com outro dicionario-->
+
+contatos.keys() <!-- retorna só as chaves-->
+contatos.values <!-- retorna só os valores do dicionario-->
+
+del contatos["guilherme@gmail.com"]["telefone"]
