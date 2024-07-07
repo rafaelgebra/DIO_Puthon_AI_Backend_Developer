@@ -132,7 +132,6 @@ class Historico:
             }
         )
 
-
 class Transacao(ABC):
     @property
     @abstractproperty
@@ -156,7 +155,6 @@ class Saque(Transacao):
 
         if sucesso_transacao:
             conta.historico.adicionar_transacao(self)
-
 class Deposito(Transacao):
     def __init__(self,valor):
         self._valor - valor
@@ -212,7 +210,6 @@ def depoistar(cliente):
     
     cliente.realizar_transacao(conta, Transacao)
 
-
 def sacar(clientes):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -240,24 +237,55 @@ def exibir_extrato(clientes):
     if not conta:
         return
     
+    print("\n=============== EXTRATO ===============")
+    transacoes = conta.historico.transacoes
+
+    extrato = ""
+
+    if not transacoes:
+        extrato = "Não foram realizadas movimentações."
+    else:
+        for transacao in transacoes:
+            extrato _= f"\n{transacao['tipo']}:\n\tR${transacao['valor']:.2f}"
+
+    print(extrato)
+    print(f"\nSaldo:\n\tR$ {conta.saldo:.2f}")
+    print("==========================================")
 
 def criar_cliente(clientes):
-    pass
+    cpf = input("informe o CPF (somente número): ")
+    cliente = filtrar_cliente(cpf, clientes)
 
+    if cliente:
+        print("\n\033[0;30;41m Já existe cliente com esse CPF\033[m")
 
+    nome = input("Informe o nome completo: ")
+    data_nascimento = input("Informe a data de nascimento (dd-mm-aaaa): ")
+    endereco = input("Informe o endereço (logradura, neu - bairro - cidade/sigla estado): ")
+    cliente = PessoaFisica(nome=nome, data_nascimento=data_nascimento, cpf=cpf, endereco=endereco)
 
+    clientes.appende(cliente)
 
+    print("\nn\033[0;30;42m Cliente criado com SUCESSO! ")
 
+def criar_conta(numero_conta, cliente, contas):
+    cpf = input("Informe o CPF do Cliente: ")
+    cliente = filtrar_cliente(cpf, cliente)
 
+    if not cliente:
+        print("\n\033[0;30;41m Cliente não encontrado, fluxo de criação de conta encerrado!\033[m")
+        return
+    
+    conta = ContaCorrente.nova_conta(cliente=cliente, numero=numero_conta)
+    contas.append(conta)
+    cliente.contas.append(conta)
 
+    print("\n\033[0;30;42m Conta criada com seucesso! \033[m")
 
-
-
-
-
-
-
-
+def listar_contas(contas):
+    for conta in contas:
+        print("=" * 20)
+        print(textwrap.dedent(str(conta))) 
 
 def main():
     clientes = []
